@@ -1,0 +1,21 @@
+body{
+  padding: 10px;
+}
+
+.table{
+  border-color: black;
+}
+.table tr th {
+  background-color: #426794;
+  color: white;
+}
+
+.btn{
+  background-color: #EB6424;
+  color: white;
+}
+.btn:hover{
+  background-color: gray;
+  color: white;
+}
+

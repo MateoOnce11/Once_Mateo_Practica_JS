@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <title>Práctica JS</title>
+</head>
+
+<body>
+
+    <div id="form" , class="form form-group">
+
+        <h1>Historia clínica</h1>
+        <div class="container d-flex justify-content-center align-items-center">
+
+            <form id="formulario" class="formulario " action="" method="" onsubmit="return validarCedula(event)">
+                <div class="row d-flex justify-content-center align-items-center">
+
+
+                    <div class="col-md-3 col-sm-3 col-xs-3 col-3">
+                        <div class="col-md-12 col-sm-12 col-xs-12" id="imageContainer">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 col-12" id="preview-image">
+
+                            </div>
+                            <!-- <label for="fileInput">Selecciona un archivo</label -->
+                            <input class="form-control col-md-12 col-sm-12 col-xs-12 col-12" type="file" 
+                                id="fileInput" accept="image/*" onchange="previewImage()" required>
+                        
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-9">
+    
+                        <div class=" row gx-4 p-2 ">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label class="col-md-12 col-sm-12 col-xs-12" for="cedula">Cédula: </label>
+                                <input class="form-control col-md-12 col-sm-12 col-xs-12" id="cedula" type="text" required
+                                    maxlength="10" pattern="[0-9]+" >
+                                <span id="cedulaError" class="error-message" style="color: red;"></span>
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6">
+                                <label class="col-md-12 col-sm-6 col-xs-3" for="nombre">Nombre: </label>
+                                <input class="form-control col-md-12 col-sm-6 col-xs-12" id="nombre" type="text" required>
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6">
+                                <label class="col-md-12 col-sm-6 col-xs-3" for="direccion">Dirección: </label>
+                                <input class="form-control col-md-12 col-sm-6 col-xs-12" id="direccion" type="text"
+                                    required>
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6">
+                                <label class="col-md-12 col-sm-6 col-xs-12" for="telefono">Teléfono: </label>
+                                <input class="form-control col-md-12 col-sm-6 col-xs-12" id="telefono" type="text" required
+                                    maxlength="10">
+                            </div>
+    
+                        </div>
+    
+                        <div class="row gx-4 p-2 ">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label class="col-md-12 col-sm-6 col-xs-12" for="fechaNacimiento">Fecha de nacimiento:
+                                </label>
+                                <input class="form-control col-md-12 col-sm-6 col-xs-12" id="fechaNacimiento" type="date"
+                                    required>
+    
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label class="col-md-12 col-sm-6 col-xs-12" for="horaNacimiento">Hora de nacimiento:
+                                </label>
+                                <input class="form-control col-md-12 col-sm-6 col-xs-12" id="horaNacimiento" type="time"
+                                    required>
+    
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label class="col-md-12 col-sm-6 col-xs-12" for="paises">País de nacimiento: </label>
+                                <select class="form-control col-md-12 col-sm-6 col-xs-12" name="paises" id="paises"
+                                    onchange="updateCitiesCombo()" required>
+                                    <option value="Ecuador">Ecuador</option>
+                                    <option value="Perú">Perú</option>
+                                    <option value="Bolivia">Bolivia</option>
+                                </select>
+    
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label class="col-md-12 col-sm-6 col-xs-12" for="cities">Ciudad de nacimiento: </label>
+                                <select class="form-control col-md-12 col-sm-6 col-xs-12" name="cities" id="cities"
+                                    required></select>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+
+
+                <button class="btn " type="submit">Ingresar información</button>
+
+
+            </form>
+        </div>
+
+
+    </div>
+
+    <hr class="my-4">
+
+    <div id="personal-info" class="personal-info">
+
+        <h2>
+            Información ingresada
+        </h2>
+        <div class="container ">
+
+            <div class="row">
+                <div class="table-responsive col-md-12">
+
+                    <table id="info-table" class="table table-bordered text-center table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Cédula</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <th>Edad</th>
+                                <th>País de nacimiento</th>
+                                <th>Ciudad de nacimiento</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    <h2>Hijos</h2>
+    <div class="container d-flex justify-content-center align-items-center">
+
+        <form id="formulario-hijos" class="formulario " action="" method="" onsubmit="loadHijos(event)">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <div class=" row gx-4 p-2 ">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label class="col-md-12 col-sm-12 col-xs-12" for="cedula">Nombre: </label>
+                            <input class="form-control col-md-12 col-sm-12 col-xs-12" id="sonName" type="text" required>
+                            
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <label class="col-md-12 col-sm-6 col-xs-3" for="nombre">Parentezco: </label>
+                            <input class="form-control col-md-12 col-sm-6 col-xs-12" id="parentezco" type="text" required>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label class="col-md-12 col-sm-6 col-xs-12" for="paises">Padre: </label>
+                            <select class="form-control col-md-12 col-sm-6 col-xs-12" name="parents" id="parents" required>
+                            </select>
+
+                        </div>
+                        
+
+                    </div>
+
+                
+
+                </div>
+            </div>
+
+
+            <button class="btn " type="submit">Agregar hijos</button>
+
+
+        </form>
+    </div>
+    <div class="mb-4"></div>
+    <div id="hijos-div">
+
+        
+        <div class="table-responsive">
+
+            <table id="children-table" class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Padre</th>
+                        <th>Parentezco</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <hr>
+    <div id="consultas-div">
+
+        <h2>Consultas</h2>
+        <div class="table-responsive">
+
+            <table id="consultas-table" class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
